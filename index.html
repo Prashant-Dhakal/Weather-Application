@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dark Weather App</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  </head>
+  <body class="bg-gradient-to-b from-gray-900 via-gray-950 to-black min-h-screen text-white font-sans p-4 relative">
+
+    <!-- Search Bar -->
+    <div class="max-w-xl mx-auto mb-6">
+      <div class="flex items-center bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden border border-white/10">
+        <input
+          type="text"
+          placeholder="Search city..."
+          class="flex-grow px-4 py-2 bg-transparent text-white placeholder-gray-400 focus:outline-none text-sm"
+          id="searchInput"
+        />
+        <button
+          class="bg-white text-black px-4 py-2 text-sm font-medium hover:bg-gray-200 transition"
+          id="searchBtn"
+        >
+          Search
+        </button>
+      </div>
+    </div>
+
+    <!-- Search Result -->
+    <div class="max-w-xl mx-auto mb-4 hidden absolute left-1/2 transform -translate-x-1/2 z-50" id="searchResult">
+      <div class="bg-white/10 backdrop-blur-[6px] rounded-xl p-4 border border-white/10 shadow-2xl">
+        <h2 class="text-base font-semibold mb-3 text-gray-300">Search Results</h2>
+        <div
+          id="resultList"
+          class="space-y-3 max-h-[160px] overflow-y-scroll pr-2 text-sm"
+          style="-ms-overflow-style: none; scrollbar-width: none;"
+        >
+          <style>
+            #resultList::-webkit-scrollbar {
+              display: none;
+            }
+          </style>
+        </div>
+      </div>
+    </div>
+
+    <!-- Weather Display -->
+    <div class="max-w-3xl mx-auto bg-white/5 backdrop-blur-md rounded-2xl shadow border border-white/10 p-6 text-center">
+      <h1 class="text-2xl font-semibold mb-1" id="city">City Name</h1>
+      <p class="text-xs text-gray-400 mb-4" id="fullDate">Today, July 21</p>
+
+      <div class="flex flex-col md:flex-row items-center justify-center gap-4 mb-6">
+        <img
+          src="https://cdn-icons-png.flaticon.com/512/1163/1163661.png"
+          alt="weather icon"
+          class="w-16 h-16"
+          id="weatherIcon"
+        />
+        <div>
+          <p class="text-4xl font-bold" id="temperature">--°</p>
+          <p class="text-sm text-gray-400" id="weatherDesc">Condition</p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-2 gap-4 text-white/90 mb-6 text-sm">
+        <div>
+          <p class="text-xl font-semibold" id="humidity">--%</p>
+          <p class="text-gray-400">Humidity</p>
+        </div>
+        <div>
+          <p class="text-xl font-semibold" id="wind">-- km/h</p>
+          <p class="text-gray-400">Wind</p>
+        </div>
+      </div>
+
+      <!-- Forecast -->
+      <div id="forecast" class="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div class="bg-white/5 p-3 rounded-xl text-center backdrop-blur-sm border border-white/10 shadow">
+          <p class="text-xs text-gray-400 mb-1">Tomorrow</p>
+          <img src="https://cdn-icons-png.flaticon.com/512/1163/1163624.png" class="w-10 h-10 mx-auto mb-1" />
+          <p class="text-lg font-semibold">28°</p>
+        </div>
+      </div>
+    </div>
+
+    <script src="main.js"></script>
+  </body>
+</html>
